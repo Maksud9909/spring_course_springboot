@@ -36,15 +36,15 @@ public class MyRESTController {
         return employee;
     }
 
-    @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee employee){ //из-за того, что у нас метод http post, мы получаем его из тела запроса
+    @PutMapping("/employees") // обновляет работника
+    public Employee updateEmployee(@RequestBody Employee employee){ //из-за того, что у нас метод http put, мы получаем его из тела запроса
         employeeService.saveEmployee(employee);
         return employee;
     }
 
     @DeleteMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable int id){
-
+        employeeService.deleteEmployee(id);
             return "Employee with this " + id + " deleted";
         }
 
